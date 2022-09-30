@@ -1,0 +1,35 @@
+{
+    "name": "kustomdesigner/download-sermons",
+    "description": "Download sermons from Amazon S3",
+	"license": "GPL-3.0+",
+	"version": "1.0.0",
+	"keywords": [
+		"wordpress",
+		"plugin"
+	],
+	"require": {
+		"php": ">=5.4.0",
+        "aws/aws-sdk-php": "^3.237"
+	},
+	"homepage": "https://github.com/Kustomdesigner/download-sermons-wp-plugin",
+	"require-dev": {
+		"wp-coding-standards/wpcs": "^2.3",
+		"phpcompatibility/phpcompatibility-wp": "^2.1"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+    "authors": [
+        {
+            "name": "Michael Hicks",
+            "email": "kustomdesigner@gmail.com"
+        }
+    ],
+	"autoload": {
+		"psr-4": {
+            "Kustomdesigner\\DownloadSermons\\": "src/"
+		}
+	}
+}
