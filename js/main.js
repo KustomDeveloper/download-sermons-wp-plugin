@@ -10,13 +10,13 @@ jQuery('.download-btn').on('click', function(e) {
 
     if(hostName === 'localhost') {
         hostName = 'http://localhost/rickhoward'
+        console.log(hostName);
     } else {
         hostName = window.location.hostname;
+        console.log(hostName);
     }
 
     const url = `${hostName}/wp-json/download-sermon/v1/${track}`;
-
-    console.log(url);
 
     fetch(url)
     .then((response) => response.blob())
