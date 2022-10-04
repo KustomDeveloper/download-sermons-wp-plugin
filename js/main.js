@@ -6,13 +6,13 @@ jQuery('.download-btn').on('click', function(e) {
     let track = jQuery(this).attr('href');
     track = track.substring(this.href.lastIndexOf('/') + 1);
 
-    let hostName = window.location.hostname;
+    let hostName;
 
     if(hostName === 'localhost') {
         hostName = 'http://localhost/rickhoward'
         console.log(hostName);
     } else {
-        hostName = window.location.hostname;
+        hostName = window.location.protocol + '//' + window.location.hostname;
         console.log(hostName);
     }
 

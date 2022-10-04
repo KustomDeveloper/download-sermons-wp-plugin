@@ -12,10 +12,12 @@
 require_once 'vendor/autoload.php';
 
 /*
-*  Load Scripts
+*  Load Scripts & Styles
 */
 function download_sermon_scripts() {
-    wp_enqueue_script ( 'download-sermons-main-js', plugin_dir_url( __FILE__ ) . 'js/main.js', 'jQuery', null, true );
+    wp_enqueue_style( 'download-sermons-main-css', plugin_dir_url( __FILE__ ) . 'css/main.css' );
+    wp_enqueue_style( 'fontAwesome-css', plugin_dir_url( __FILE__ ) . 'css/font-awesome.css' );
+    wp_enqueue_script( 'download-sermons-main-js', plugin_dir_url( __FILE__ ) . 'js/main.js', 'jQuery', null, true );
 }
 add_action( 'wp_enqueue_scripts', 'download_sermon_scripts' );
 
@@ -30,6 +32,19 @@ use Aws\S3\Exception\S3Exception;
 */
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
+
+/*
+*  Download Link Shortcode 
+*/
+function download_link_sc( $atts ) {
+	$a = shortcode_atts( array(
+		'link' => '',
+	), $atts );
+
+	return "<a class='download-btn' href=" . $a['link'] . "><i class='fa fa-download' aria-hidden='true'></i>Download</a>";
+}
+add_shortcode( 'download_link', 'download_link_sc' );
+
 
 /**
  *  Download Sermon from Amazon S3
